@@ -3,7 +3,6 @@ class MyArray {
       this.originalArray = array;
   
     }
-  
     getSorted(key) {
           
         if(key)
