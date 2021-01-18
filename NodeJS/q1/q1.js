@@ -1,8 +1,7 @@
-var parser = require('xml2json');
-var fs = require('fs');
+const XMLtoJSON = require("./wrapper.js");
 
-//Some random XML 
-var xml_input =   `<root>
+//Some random XML
+var xml_input = `<root>
                 <jar journey="recognize">-1836372714</jar>
                 <halfway>after</halfway>
                 <line>
@@ -22,35 +21,5 @@ var xml_input =   `<root>
                 <movie>fifteen</movie>
             </root>`;
 
-// xml as a String
-console.log("input -> %s", xml_input);
-
-// xml to json
-var json = parser.toJson(xml_input);
-console.log("to json -> %s", json);
- 
-// json to xml
-var xml_output = parser.toXml(json);
-console.log("back to xml -> %s", xml_output);
-
-
-
-
-//XML as a file input
-try{
-    var xml_file_input = fs.readFileSync('q1.xml', 'utf8');
-    console.log("input -> %s", xml_file_input);
-
-    // xml to json
-    var json_file = parser.toJson(xml_file_input);
-    console.log("to json -> %s", json_file);
-     
-    // json to xml
-    var xml_file_output = parser.toXml(json_file);
-    console.log("back to xml -> %s", xml_file_output);
-}catch(error){
-    console.log(`${error}`);
-}
-
-
- 
+console.log(XMLtoJSON.stringXMLtoJSON(xml_input));
+console.log(XMLtoJSON.pathXMLtoJSON(`${__dirname}/q1.xml`));
